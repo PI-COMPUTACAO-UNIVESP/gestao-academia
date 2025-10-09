@@ -112,19 +112,9 @@
 
 ---
 
-## 12. Riscos & Mitigações
-- **R1 — Atrasos por curva de aprendizado.** Mitigar com pareamento sênior+inicial e tarefas “starter”.  
-- **R2 — Escopo se expandir.** Proteger MVP e usar *parking lot* para extras.  
-- **R3 — Deploy em cima da hora.** Estabelecer *staging* e *freeze* antes da entrega. (alinhado ao cronograma do relatório) 
-
----
-
-## 13. Métricas de Sucesso (MVP)
+## 12. Métricas de Sucesso (MVP)
 - Operar cadastro+planos+mensalidades para ≥ 50 alunos de teste sem erros críticos.  
-- Geração de relatórios em ≤ 2 s (amostra acadêmica).  
+- Geração de relatórios em ≤ 2 s.  
 - Checklist de acessibilidade básico aprovado. 
 
----
 
-## 14. Anexos
-- Cronograma acadêmico e referências conforme relatório original.  
