@@ -4,7 +4,7 @@ export default function Home() {
     return (
         <main className="container" aria-labelledby="home-heading">
             <h1 id="home-heading">GYM MANAGEMENT</h1>
-            <p>Manage members, classes and schedules with simplicity.</p>
+            <p>Manage members, classes and schedules with simplicity...</p>
             <figure>
                 <Image
                     src="/undraw_athletes-training_koqa.svg"
