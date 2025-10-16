@@ -7,17 +7,38 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum UserRole {
-  ADMIN
-  TEACHER
-}
-
 model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  password  String
-  name      String
-  role      UserRole @default(TEACHER)
+  id       Int @id @default(autoincrement())
+  personId Int @unique
+
+  // Authentication Information
+  username String @unique @db.VarChar(50)
+  password String @db.VarChar(255)
+
+  // Metadata
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // Relations
+  person Person @relation(fields: [personId], references: [id])
+}
+
+model Person {
+  id Int @id @default(autoincrement())
+
+  // Personal Information
+  firstName String    @db.VarChar(50)
+  lastName  String    @db.VarChar(50)
+  birthDate DateTime?
+
+  // Contact Information
+  email String? @unique @db.VarChar(255)
+  phone String? @db.VarChar(20)
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user User?
 }

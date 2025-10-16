@@ -1,11 +1,18 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import Nav from '../components/Nav';
-import AuthProvider from '../context/AuthProvider';
+import Header from '@/component/Header/Header';
 
 export const metadata: Metadata = {
-    title: 'Gym management',
-    description: 'Manage your gym effectively',
+    title: {
+        default: 'Gestão Academia',
+        template: '%s | Gestão Academia',
+    },
+    description: 'Sistema de gestão para academias',
+    keywords: [
+        'gestao',
+        'academia',
+    ],
+    authors: [{ name: 'Gestão Academia' }],
 };
 
 export const viewport: Viewport = {
@@ -18,12 +25,10 @@ export default function RootLayout(
     { children }: Readonly<{ children: React.ReactNode }>,
 ) {
     return (
-        <html lang="en">
-            <body className='container'>
-                <AuthProvider>
-                    <Nav />
-                    {children}
-                </AuthProvider>
+        <html lang="pt-BR">
+            <body>
+                <Header />
+                {children}
             </body>
         </html>
     );
