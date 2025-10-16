@@ -7,7 +7,7 @@ export default function ClientsPage() {
                 <caption className="sr-only">Clients table</caption>
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
+                        <th scope="col">Name Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</th>
                         <th scope="col">Email</th>
                         <th scope="col">Status</th>
                     </tr>
