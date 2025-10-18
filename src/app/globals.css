@@ -1,15 +1,28 @@
 @import "@picocss/pico/css/pico.orange.min.css";
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-h1, span, strong {
-  color: var(--pico-primary);
+body > header {
+    margin-bottom: var(--pico-block-spacing-vertical);
+    padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
+    border-radius: var(--pico-border-radius);
+    background: var(--pico-card-background-color);
+    box-shadow: var(--pico-card-box-shadow);
 }
 
-small {
-  color: var(--pico-muted-color);
+main {
+    flex: 1;
+}
+
+.center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
