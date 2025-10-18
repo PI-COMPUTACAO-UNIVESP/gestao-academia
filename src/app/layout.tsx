@@ -1,11 +1,11 @@
-import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import Nav from '../components/Nav';
-import AuthProvider from '../context/AuthProvider';
+import type { Metadata, Viewport } from 'next';
+import SignIn from '@/components/SignIn';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
-    title: 'Gym management',
-    description: 'Manage your gym effectively',
+    title: 'Gestão de academias',
+    description: 'Sistema de gestão para academias',
 };
 
 export const viewport: Viewport = {
@@ -18,12 +18,11 @@ export default function RootLayout(
     { children }: Readonly<{ children: React.ReactNode }>,
 ) {
     return (
-        <html lang="en">
-            <body className='container'>
-                <AuthProvider>
-                    <Nav />
-                    {children}
-                </AuthProvider>
+        <html lang="pt-BR">
+            <body>
+                <SignIn />
+                <Header />
+                {children}
             </body>
         </html>
     );

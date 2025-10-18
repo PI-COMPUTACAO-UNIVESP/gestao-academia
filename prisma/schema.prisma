@@ -7,17 +7,21 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum UserRole {
-  ADMIN
-  TEACHER
-}
+model Member {
+  id String @id @default(cuid())
 
-model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  password  String
-  name      String
-  role      UserRole @default(TEACHER)
+  // Personal Information
+  firstName String
+  lastName  String
+  birthDate DateTime @db.Date
+
+  // Contact Information
+  phone String
+  email String
+
+  // Metadata
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("members")
 }
