@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
+import SignIn from '@/components/SignIn';
 import Header from '@/components/Header';
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout(
     return (
         <html lang="pt-BR">
             <body>
+                <SignIn />
                 <Header />
                 {children}
             </body>
