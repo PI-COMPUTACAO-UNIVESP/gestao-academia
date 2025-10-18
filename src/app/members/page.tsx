@@ -1,15 +1,11 @@
-import { prisma } from '@/lib/prisma';
 import { formatDate } from '@/utils/format';
 import { Member } from '@prisma/client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getMembers } from './actions';
 
 export default async function HomePage() {
-    const members: Array<Member> = await prisma.member.findMany({
-        orderBy: {
-            firstName: 'asc',
-        },
-    });
+    const members: Array<Member> = await getMembers();
 
     return (
         <main
