@@ -7,25 +7,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Member {
-  id String @id @default(cuid())
-
-  // Personal Information
-  firstName String
-  lastName  String
-  birthDate DateTime @db.Date
-
-  // Contact Information
-  phone String
-  email String
-
-  // Metadata
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("members")
-}
-
 model User {
   id String @id @default(cuid())
 
@@ -40,4 +21,58 @@ model User {
   updatedAt DateTime @updatedAt
 
   @@map("users")
+}
+
+model Member {
+  id String @id @default(cuid())
+
+  // Personal Information
+  firstName String
+  lastName  String
+  birthDate DateTime @db.Date
+
+  // Contact Information
+  phone String
+  email String
+
+  // Relations
+  attendances Attendance[]
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("members")
+}
+
+model Class {
+  id String @id @default(cuid())
+
+  // Class Information
+  type String
+  date DateTime
+
+  // Relations
+  attendances Attendance[]
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("classes")
+}
+
+model Attendance {
+  classId  String
+  memberId String
+
+  // Relations
+  class  Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  // Metadata
+  createdAt DateTime @default(now())
+
+  @@id([classId, memberId])
+  @@map("attendances")
 }

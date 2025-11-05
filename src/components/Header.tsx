@@ -59,6 +59,18 @@ export default function Header() {
                                 Membros
                             </Link>
                         </li>
+                        <li role="menuitem">
+                            <Link
+                                href="/attendances"
+                                aria-current={
+                                    pathname?.startsWith('/attendances') ?
+                                        'page' :
+                                        undefined
+                                }
+                            >
+                                Presenças
+                            </Link>
+                        </li>
                     </ul>
                     <Link href="/" onClick={signOut}>Sair</Link>
                 </nav>
