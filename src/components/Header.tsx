@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 
@@ -11,7 +12,21 @@ export default function Header() {
     return (
         <header role="banner">
             <div className="container">
-                <h1>Gestão de academias</h1>
+                <h1
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                    }}
+                >
+                    <Image
+                        src="/chart-2-svgrepo-com.svg"
+                        alt="Logo"
+                        width={32}
+                        height={32}
+                    />
+                    Gestão de academias
+                </h1>
                 <nav aria-label="Menu principal">
                     <ul
                         role="menubar"

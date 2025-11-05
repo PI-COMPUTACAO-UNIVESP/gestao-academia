@@ -7,6 +7,12 @@ import { AuthProvider } from '@/context/AuthContext';
 export const metadata: Metadata = {
     title: 'Gestão de academias',
     description: 'Sistema de gestão para academias',
+    icons: {
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/chart-2-svgrepo-com.svg', type: 'image/svg+xml' },
+        ],
+    },
 };
 
 export const viewport: Viewport = {
