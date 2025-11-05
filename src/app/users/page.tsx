@@ -19,6 +19,10 @@ export default async function UsersPage() {
             <article>
                 <header>
                     <h2 id="users-heading">Usuários</h2>
+                    <p>
+                        Gerencie os usuários do sistema e suas permissões de
+                        acesso.
+                    </p>
                 </header>
                 <table aria-label="Lista de usuários do sistema" role="grid">
                     <thead>

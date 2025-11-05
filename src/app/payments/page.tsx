@@ -20,6 +20,10 @@ export default async function PaymentsPage() {
             <article>
                 <header>
                     <h2 id="payments-heading">Pagamentos</h2>
+                    <p>
+                        Gerencie os pagamentos e mensalidades dos membros da
+                        academia.
+                    </p>
                 </header>
                 <table aria-label="Lista de pagamentos" role="grid">
                     <thead>

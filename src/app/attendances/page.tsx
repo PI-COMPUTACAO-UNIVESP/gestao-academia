@@ -15,6 +15,10 @@ export default async function AttendancesPage() {
             <article>
                 <header>
                     <h2 id="attendances-heading">Aulas e Presenças</h2>
+                    <p>
+                        Gerencie as aulas cadastradas e controle a presença
+                        dos alunos.
+                    </p>
                 </header>
                 <table aria-label="Lista de aulas" role="grid">
                     <thead>

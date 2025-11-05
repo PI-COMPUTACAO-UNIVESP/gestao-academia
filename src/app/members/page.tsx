@@ -19,6 +19,10 @@ export default async function HomePage() {
             <article>
                 <header>
                     <h2 id="members-heading">Membros</h2>
+                    <p>
+                        Visualize e gerencie todos os membros cadastrados na
+                        academia.
+                    </p>
                 </header>
                 <table aria-label="Lista de membros da academia" role="grid">
                     <thead>
