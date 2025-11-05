@@ -2,16 +2,25 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Header() {
     const pathname = usePathname();
+    const { signOut } = useAuth();
 
     return (
         <header role="banner">
             <div className="container">
                 <h1>Gestão de academias</h1>
                 <nav aria-label="Menu principal">
-                    <ul role="menubar">
+                    <ul
+                        role="menubar"
+                        style={{
+                            display: 'flex',
+                            gap: '1rem',
+                            alignItems: 'center',
+                        }}
+                    >
                         <li role="menuitem">
                             <Link
                                 href="/"
@@ -37,6 +46,7 @@ export default function Header() {
                             </Link>
                         </li>
                     </ul>
+                    <Link href="/" onClick={signOut}>Sair</Link>
                 </nav>
             </div>
         </header>

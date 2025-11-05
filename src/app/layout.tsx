@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import SignIn from '@/components/SignIn';
 import Header from '@/components/Header';
+import { AuthProvider } from '@/context/AuthContext';
 
 export const metadata: Metadata = {
     title: 'Gestão de academias',
@@ -20,9 +21,11 @@ export default function RootLayout(
     return (
         <html lang="pt-BR">
             <body>
-                <SignIn />
-                <Header />
-                {children}
+                <AuthProvider>
+                    <SignIn />
+                    <Header />
+                    {children}
+                </AuthProvider>
             </body>
         </html>
     );
