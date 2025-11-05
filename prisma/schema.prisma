@@ -25,3 +25,19 @@ model Member {
 
   @@map("members")
 }
+
+model User {
+  id String @id @default(cuid())
+
+  // Login Information
+  name     String
+  email    String @unique
+  password String
+  profile  String
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
