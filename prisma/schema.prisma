@@ -37,6 +37,7 @@ model Member {
 
   // Relations
   attendances Attendance[]
+  payments    Payment[]
 
   // Metadata
   createdAt DateTime @default(now())
@@ -75,4 +76,23 @@ model Attendance {
 
   @@id([classId, memberId])
   @@map("attendances")
+}
+
+model Payment {
+  id String @id @default(cuid())
+
+  // Payment Information
+  paymentDate DateTime @db.Date
+  amount      Decimal  @db.Decimal(10, 2)
+  validUntil  DateTime @db.Date
+
+  // Relations
+  memberId String
+  member   Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("payments")
 }

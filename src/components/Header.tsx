@@ -34,18 +34,32 @@ export default function Header() {
                             </Link>
                         </li>
                         {user?.profile === 'Administrador' && (
-                            <li role="menuitem">
-                                <Link
-                                    href="/users"
-                                    aria-current={
-                                        pathname?.startsWith('/users') ?
-                                            'page' :
-                                            undefined
-                                    }
-                                >
-                                    Usuários
-                                </Link>
-                            </li>
+                            <>
+                                <li role="menuitem">
+                                    <Link
+                                        href="/users"
+                                        aria-current={
+                                            pathname?.startsWith('/users') ?
+                                                'page' :
+                                                undefined
+                                        }
+                                    >
+                                        Usuários
+                                    </Link>
+                                </li>
+                                <li role="menuitem">
+                                    <Link
+                                        href="/payments"
+                                        aria-current={
+                                            pathname?.startsWith('/payments') ?
+                                                'page' :
+                                                undefined
+                                        }
+                                    >
+                                        Pagamentos
+                                    </Link>
+                                </li>
+                            </>
                         )}
                         <li role="menuitem">
                             <Link
