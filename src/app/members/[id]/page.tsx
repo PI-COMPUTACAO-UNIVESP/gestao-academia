@@ -1,15 +1,19 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { formatDate } from '@/utils/format';
+import { formatDateForInput } from '@/utils/format';
 import Link from 'next/link';
 import { deleteMember, getMember, updateMember } from './actions';
+import { getCurrentUser } from '@/lib/auth';
 
 type Props = {
     params: Promise<{ id: string }>,
 };
 
 export default async function Page({ params }: Props) {
+    const currentUser = await getCurrentUser();
+    const isAdmin = currentUser?.profile === 'Administrador';
+
     const { id } = await params;
     const member = await getMember(id);
 
@@ -82,7 +86,7 @@ export default async function Page({ params }: Props) {
                             type="date"
                             id="birthDate"
                             name="birthDate"
-                            defaultValue={formatDate(member.birthDate)}
+                            defaultValue={formatDateForInput(member.birthDate)}
                             required
                             aria-required="true"
                             aria-labelledby="birthDate-label"
@@ -129,18 +133,21 @@ export default async function Page({ params }: Props) {
                             <button
                                 type="submit"
                                 aria-label="Salvar alterações no cadastro"
+                                disabled={!isAdmin}
                             >
                                 Salvar
                             </button>
+
+                            <button
+                                type="submit"
+                                onClick={deleteMemberWithId}
+                                className="secondary"
+                                aria-label="Excluir este membro"
+                                disabled={!isAdmin}
+                            >
+                                Excluir
+                            </button>
                         </div>
-                        <button
-                            type="submit"
-                            onClick={deleteMemberWithId}
-                            className="secondary"
-                            aria-label="Excluir este membro"
-                        >
-                            Excluir
-                        </button>
                     </footer>
                 </form>
             </article>

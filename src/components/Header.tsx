@@ -6,7 +6,7 @@ import { useAuth } from '@/context/AuthContext';
 
 export default function Header() {
     const pathname = usePathname();
-    const { signOut } = useAuth();
+    const { user, signOut } = useAuth();
 
     return (
         <header role="banner">
@@ -33,6 +33,20 @@ export default function Header() {
                                 Início
                             </Link>
                         </li>
+                        {user?.profile === 'Administrador' && (
+                            <li role="menuitem">
+                                <Link
+                                    href="/users"
+                                    aria-current={
+                                        pathname?.startsWith('/users') ?
+                                            'page' :
+                                            undefined
+                                    }
+                                >
+                                    Usuários
+                                </Link>
+                            </li>
+                        )}
                         <li role="menuitem">
                             <Link
                                 href="/members"
@@ -52,5 +66,3 @@ export default function Header() {
         </header>
     );
 }
-
-

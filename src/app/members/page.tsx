@@ -3,9 +3,12 @@ import { Member } from '@prisma/client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getMembers } from './actions';
+import { getCurrentUser } from '@/lib/auth';
 
 export default async function HomePage() {
     const members: Array<Member> = await getMembers();
+    const currentUser = await getCurrentUser();
+    const isAdmin = currentUser?.profile === 'Administrador';
 
     return (
         <main
@@ -53,14 +56,16 @@ export default async function HomePage() {
                         ))}
                     </tbody>
                 </table>
-                <footer>
-                    <Link
-                        href="/members/new"
-                        role="button"
-                    >
-                        Adicionar membro
-                    </Link>
-                </footer>
+                {isAdmin && (
+                    <footer>
+                        <Link
+                            href="/members/new"
+                            role="button"
+                        >
+                            Adicionar membro
+                        </Link>
+                    </footer>
+                )}
             </article>
         </main>
     );

@@ -31,7 +31,6 @@ export default function SignIn() {
         }
     };
 
-    // Don't show if user is already signed in or still loading
     if (loading || user) {
         return null;
     }

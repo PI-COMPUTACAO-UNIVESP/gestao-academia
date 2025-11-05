@@ -1,18 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAuthenticatedUser } from '@/lib/auth';
+import { requireAuth, isAuthError } from '@/lib/auth';
 
 export async function GET(request: NextRequest) {
     try {
-        const user = getAuthenticatedUser(request);
+        const authResult = await requireAuth(request);
 
-        if (!user) {
-            return NextResponse.json(
-                { error: 'Not authenticated' },
-                { status: 401 },
-            );
+        if (isAuthError(authResult)) {
+            return authResult;
         }
 
-        return NextResponse.json(user, { status: 200 });
+        return NextResponse.json(authResult, { status: 200 });
     } catch (error) {
         console.error('Get user error:', error);
         return NextResponse.json(

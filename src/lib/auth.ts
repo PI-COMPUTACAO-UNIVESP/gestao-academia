@@ -1,27 +1,76 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { User } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
+import { cookies } from 'next/headers';
 
 export type UserWithoutPassword = Omit<User, 'password'>;
 
-/**
- * Get the authenticated user from the request headers.
- * The middleware adds user data to headers after authentication.
- * @param request - The Next.js request object
- * @returns The user object without password, or null if not found
- */
-export function getAuthenticatedUser(
+export async function requireAuth(
     request: NextRequest,
-): UserWithoutPassword | null {
-    try {
-        const userDataHeader = request.headers.get('x-user-data');
+): Promise<UserWithoutPassword | NextResponse> {
+    const userId = request.cookies.get('userId')?.value;
 
-        if (!userDataHeader) {
-            return null;
-        }
+    if (!userId) {
+        return NextResponse.json(
+            { error: 'Not authenticated' },
+            { status: 401 },
+        );
+    }
 
-        return JSON.parse(userDataHeader) as UserWithoutPassword;
-    } catch (error) {
-        console.error('Error parsing user data from headers:', error);
+    const user = await prisma.user.findUnique({
+        where: {
+            id: userId,
+        },
+    });
+
+    if (!user) {
+        const response = NextResponse.json(
+            { error: 'User not found' },
+            { status: 401 },
+        );
+
+        response.cookies.set('userId', '', {
+            httpOnly: true,
+            sameSite: 'lax',
+            maxAge: 0,
+        });
+
+        return response;
+    }
+
+    const { password: _, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+}
+
+export function isAuthError(
+    result: UserWithoutPassword | NextResponse,
+): result is NextResponse {
+    return result instanceof NextResponse;
+}
+
+export async function getCurrentUser(): Promise<UserWithoutPassword | null> {
+    const cookieStore = await cookies();
+    const userId = cookieStore.get('userId')?.value;
+
+    if (!userId) {
         return null;
     }
+
+    const user = await prisma.user.findUnique({
+        where: {
+            id: userId,
+        },
+    });
+
+    if (!user) {
+        return null;
+    }
+
+    const { password: _, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+}
+
+export async function isAdmin(): Promise<boolean> {
+    const user = await getCurrentUser();
+    return user?.profile === 'Administrador';
 }
