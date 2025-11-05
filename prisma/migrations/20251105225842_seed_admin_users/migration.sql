@@ -1,9 +1,9 @@
 INSERT INTO
-    users (name, email, password, profile)
+    users (id, name, email, password, profile, "createdAt", "updatedAt")
 VALUES
-  ('Flavio', 'frmilanij@gmail.com', '123123123', 'Administrador'),
-  ('Gabriel', 'gabriel.martins2315@gmail.com', '123123123', 'Administrador'),
-  ('Raquel', 'raquel.gomexs@gmail.com', '123123123', 'Administrador'),
-  ('Adriana', 'drisouza1325@gmail.com', '123123123', 'Administrador'),
-  ('Mateus', 'mateus3009@gmail.com', '123123123', 'Administrador'),
-  ('Eveline', 'evelinecontato@gmail.com', '123123123', 'Administrador');
+  (gen_random_uuid()::text, 'Flavio', 'frmilanij@gmail.com', '123123123', 'Administrador', NOW(), NOW()),
+  (gen_random_uuid()::text, 'Gabriel', 'gabriel.martins2315@gmail.com', '123123123', 'Administrador', NOW(), NOW()),
+  (gen_random_uuid()::text, 'Raquel', 'raquel.gomexs@gmail.com', '123123123', 'Administrador', NOW(), NOW()),
+  (gen_random_uuid()::text, 'Adriana', 'drisouza1325@gmail.com', '123123123', 'Administrador', NOW(), NOW()),
+  (gen_random_uuid()::text, 'Mateus', 'mateus3009@gmail.com', '123123123', 'Administrador', NOW(), NOW()),
+  (gen_random_uuid()::text, 'Eveline', 'evelinecontato@gmail.com', '123123123', 'Administrador', NOW(), NOW());
