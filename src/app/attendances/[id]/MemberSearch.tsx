@@ -66,8 +66,6 @@ export function MemberSearch({
 
             {message && (
                 <p
-                    role="status"
-                    aria-live="polite"
                     style={{
                         color: message.includes('sucesso') ?
                             'green' :
@@ -82,13 +80,14 @@ export function MemberSearch({
 
             {results.length > 0 && (
                 <div
+                    aria-label="Resultados da busca"
                     style={{
                         marginTop: '1rem',
                         border: '1px solid var(--muted-border-color)',
                         borderRadius: 'var(--border-radius)',
                     }}
                 >
-                    <table>
+                    <table aria-label="Membros encontrados">
                         <thead>
                             <tr>
                                 <th scope="col">Nome</th>
@@ -115,6 +114,11 @@ export function MemberSearch({
                                                 }
                                                 disabled={isAlreadyAdded}
                                                 className="secondary"
+                                                aria-label={
+                                                    `Adicionar ` +
+                                                    `${member.firstName} ` +
+                                                    `${member.lastName} à aula`
+                                                }
                                                 style={{
                                                     padding:
                                                         '0.5rem 1rem',

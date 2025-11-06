@@ -35,12 +35,19 @@ export default function SignIn() {
         return null;
     }
 
-    return <dialog ref={dialogRef} open>
+    return <dialog
+        ref={dialogRef}
+        open
+        aria-labelledby="login-heading"
+    >
         <article>
             <header>
-                <h2>Login</h2>
+                <h2 id="login-heading">Login</h2>
             </header>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                aria-labelledby="login-heading"
+            >
                 {error && (
                     <p style={{ color: 'red', marginBottom: '1rem' }}>
                         {error}
@@ -52,12 +59,18 @@ export default function SignIn() {
                         type="email"
                         id="email"
                         placeholder="Digite seu email"
+                        aria-describedby={
+                            errors.email ? 'email-error' : undefined
+                        }
                         {...register('email', {
                             required: 'Email é obrigatório',
                         })}
                     />
                     {errors.email && (
-                        <small style={{ color: 'red' }}>
+                        <small
+                            id="email-error"
+                            style={{ color: 'red' }}
+                        >
                             {errors.email.message}
                         </small>
                     )}
@@ -68,17 +81,30 @@ export default function SignIn() {
                         type="password"
                         id="password"
                         placeholder="Digite sua senha"
+                        aria-describedby={
+                            errors.password ?
+                                'password-error' :
+                                undefined
+                        }
                         {...register('password', {
                             required: 'Senha é obrigatória',
                         })}
                     />
                     {errors.password && (
-                        <small style={{ color: 'red' }}>
+                        <small
+                            id="password-error"
+                            style={{ color: 'red' }}
+                        >
                             {errors.password.message}
                         </small>
                     )}
                 </label>
-                <button type="submit">Entrar</button>
+                <button
+                    type="submit"
+                    aria-label="Fazer login no sistema"
+                >
+                    Entrar
+                </button>
             </form>
         </article>
     </dialog>;

@@ -43,19 +43,18 @@ export default function NewPaymentPage() {
         <main className="container">
             <article>
                 <header>
-                    <h2>Novo Pagamento</h2>
+                    <h2 id="payment-heading">Novo Pagamento</h2>
                 </header>
 
                 {error && (
                     <p
-                        role="alert"
                         style={{ color: 'red', marginBottom: '1rem' }}
                     >
                         {error}
                     </p>
                 )}
 
-                <form action={handleSubmit}>
+                <form action={handleSubmit} aria-labelledby="payment-heading">
                     <MemberSearch
                         onSelectMember={setSelectedMember}
                         selectedMember={selectedMember}
@@ -97,14 +96,22 @@ export default function NewPaymentPage() {
                         />
                     </label>
 
-                    <footer>
-                        <button type="submit" disabled={!selectedMember}>
+                    <footer aria-label="Ações do formulário">
+                        <button
+                            type="submit"
+                            disabled={!selectedMember}
+                            aria-label="Salvar novo pagamento"
+                        >
                             Salvar
                         </button>
                         <Link
                             href="/payments"
                             role="button"
                             className="secondary"
+                            aria-label={
+                                'Cancelar e voltar para lista ' +
+                                'de pagamentos'
+                            }
                         >
                             Cancelar
                         </Link>

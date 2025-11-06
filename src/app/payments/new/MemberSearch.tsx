@@ -74,6 +74,7 @@ export function MemberSearch({
                         onClick={() =>
                             onSelectMember(null as unknown as Member)
                         }
+                        aria-label="Trocar membro selecionado"
                         style={{
                             marginTop: '0.5rem',
                             padding: '0.5rem 1rem',
@@ -89,13 +90,14 @@ export function MemberSearch({
 
             {results.length > 0 && !selectedMember && (
                 <div
+                    aria-label="Resultados da busca"
                     style={{
                         marginTop: '1rem',
                         border: '1px solid var(--muted-border-color)',
                         borderRadius: 'var(--border-radius)',
                     }}
                 >
-                    <table>
+                    <table aria-label="Membros encontrados">
                         <thead>
                             <tr>
                                 <th scope="col">Nome</th>
@@ -117,6 +119,11 @@ export function MemberSearch({
                                                 handleSelectMember(member)
                                             }
                                             className="secondary"
+                                            aria-label={
+                                                `Selecionar ` +
+                                                `${member.firstName} ` +
+                                                `${member.lastName}`
+                                            }
                                             style={{
                                                 padding: '0.5rem 1rem',
                                                 fontSize: '0.875rem',

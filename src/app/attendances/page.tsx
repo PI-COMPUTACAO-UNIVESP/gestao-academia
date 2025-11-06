@@ -9,7 +9,6 @@ export default async function AttendancesPage() {
     return (
         <main
             className='container'
-            role="main"
             aria-labelledby="attendances-heading"
         >
             <article>
@@ -20,7 +19,7 @@ export default async function AttendancesPage() {
                         dos alunos.
                     </p>
                 </header>
-                <table aria-label="Lista de aulas" role="grid">
+                <table aria-label="Lista de aulas">
                     <thead>
                         <tr>
                             <th scope="col">Tipo</th>
@@ -39,12 +38,15 @@ export default async function AttendancesPage() {
                                     <Link
                                         href={`/attendances/${classItem.id}`}
                                         title="Gerenciar presenças"
-                                        aria-label="Gerenciar presenças da aula"
+                                        aria-label={
+                                            `Gerenciar presenças da aula ` +
+                                            `de ${classItem.type}`
+                                        }
                                         data-tooltip="Gerenciar"
                                     >
                                         <Image
                                             src="/square-top-up-svgrepo-com.svg"
-                                            alt="Gerenciar"
+                                            alt="Gerenciar presenças da aula"
                                             width={24}
                                             height={24}
                                         />

@@ -34,13 +34,14 @@ export default async function ClassPage({ params }: Props) {
         <main className='container'>
             <article>
                 <header>
-                    <nav>
+                    <nav aria-label="Breadcrumb">
                         <ul>
                             <li>
                                 <Link
                                     href="/attendances"
                                     role="button"
                                     className="secondary outline"
+                                    aria-label="Voltar para lista de aulas"
                                 >
                                     &lt; Voltar
                                 </Link>
@@ -98,7 +99,6 @@ export default async function ClassPage({ params }: Props) {
 
                     <footer
                         className='grid'
-                        role="group"
                         aria-label="Ações do formulário"
                     >
                         <div className="grid">
@@ -125,17 +125,19 @@ export default async function ClassPage({ params }: Props) {
 
             <article>
                 <header>
-                    <h3>Adicionar Membros à Aula</h3>
+                    <h3 id="add-members-heading">Adicionar Membros à Aula</h3>
                 </header>
-                <MemberSearch
-                    classId={id}
-                    currentMembers={classData.attendances}
-                />
+                <section aria-labelledby="add-members-heading">
+                    <MemberSearch
+                        classId={id}
+                        currentMembers={classData.attendances}
+                    />
+                </section>
             </article>
 
             <article>
                 <header>
-                    <h3>
+                    <h3 id="present-members-heading">
                         Membros Presentes (
                         {classData.attendances.length})
                     </h3>
@@ -144,8 +146,7 @@ export default async function ClassPage({ params }: Props) {
                     <p>Nenhum membro registrado nesta aula ainda.</p>
                 ) : (
                     <table
-                        aria-label="Lista de membros presentes"
-                        role="grid"
+                        aria-labelledby="present-members-heading"
                     >
                         <thead>
                             <tr>
@@ -171,6 +172,15 @@ export default async function ClassPage({ params }: Props) {
                                                 id,
                                                 attendance.member.id,
                                             )}
+                                            aria-label={
+                                                `Remover ${
+                                                    attendance.member
+                                                        .firstName
+                                                } ${
+                                                    attendance.member
+                                                        .lastName
+                                                } da aula`
+                                            }
                                         >
                                             <button
                                                 type="submit"
@@ -179,7 +189,15 @@ export default async function ClassPage({ params }: Props) {
                                                     padding: '0.5rem 1rem',
                                                     fontSize: '0.875rem',
                                                 }}
-                                                aria-label="Remover membro"
+                                                aria-label={
+                                                    `Remover ${
+                                                        attendance.member
+                                                            .firstName
+                                                    } ${
+                                                        attendance.member
+                                                            .lastName
+                                                    }`
+                                                }
                                             >
                                                 Remover
                                             </button>

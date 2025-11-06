@@ -8,13 +8,14 @@ export default async function NewMemberPage() {
         <main className='container'>
             <article>
                 <header>
-                    <nav>
+                    <nav aria-label="Breadcrumb">
                         <ul>
                             <li>
                                 <Link
                                     href="/members"
                                     role="button"
                                     className="secondary outline"
+                                    aria-label="Voltar para lista de membros"
                                 >
                                     &lt; Voltar
                                 </Link>
@@ -30,7 +31,6 @@ export default async function NewMemberPage() {
                 >
                     <div
                         className="grid"
-                        role="group"
                         aria-label="Informações pessoais"
                     >
                         <label htmlFor="firstName" id="firstName-label">
@@ -103,7 +103,7 @@ export default async function NewMemberPage() {
                         />
                     </label>
 
-                    <footer role="group" aria-label="Ações do formulário">
+                    <footer aria-label="Ações do formulário">
                         <button
                             type="submit"
                             aria-label="Adicionar novo membro à academia"

@@ -14,7 +14,6 @@ export default async function PaymentsPage() {
     return (
         <main
             className='container'
-            role="main"
             aria-labelledby="payments-heading"
         >
             <article>
@@ -25,7 +24,7 @@ export default async function PaymentsPage() {
                         academia.
                     </p>
                 </header>
-                <table aria-label="Lista de pagamentos" role="grid">
+                <table aria-label="Lista de pagamentos">
                     <thead>
                         <tr>
                             <th scope="col">Data do Pagamento</th>
@@ -44,6 +43,11 @@ export default async function PaymentsPage() {
                                 <td>
                                     <Link
                                         href={`/members/${payment.member.id}`}
+                                        aria-label={
+                                            `Ver detalhes de ` +
+                                            `${payment.member.firstName} ` +
+                                            `${payment.member.lastName}`
+                                        }
                                     >
                                         {payment.member.firstName}{' '}
                                         {payment.member.lastName}
@@ -57,12 +61,25 @@ export default async function PaymentsPage() {
                                                 await deletePayment(payment.id);
                                             }}
                                             style={{ display: 'inline' }}
+                                            aria-label={
+                                                `Excluir pagamento de ` +
+                                                `${payment.member.firstName} ` +
+                                                `${payment.member.lastName}`
+                                            }
                                         >
                                             <button
                                                 type="submit"
                                                 className="secondary"
                                                 title="Excluir"
-                                                aria-label="Excluir pagamento"
+                                                aria-label={
+                                                    `Excluir pagamento de ${
+                                                        payment.member
+                                                            .firstName
+                                                    } ${
+                                                        payment.member
+                                                            .lastName
+                                                    }`
+                                                }
                                                 data-tooltip="Excluir"
                                                 style={{
                                                     padding: '0.5rem',

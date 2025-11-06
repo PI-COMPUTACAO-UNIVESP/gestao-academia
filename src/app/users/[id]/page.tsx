@@ -26,13 +26,14 @@ export default async function Page({ params }: Props) {
         <main className='container'>
             <article>
                 <header>
-                    <nav>
+                    <nav aria-label="Breadcrumb">
                         <ul>
                             <li>
                                 <Link
                                     href="/users"
                                     role="button"
                                     className="secondary outline"
+                                    aria-label="Voltar para lista de usuários"
                                 >
                                     &lt; Voltar
                                 </Link>
@@ -111,7 +112,6 @@ export default async function Page({ params }: Props) {
                     {isAdmin && (
                         <footer
                             className='grid'
-                            role="group"
                             aria-label="Ações do formulário"
                         >
                             <div className="grid">

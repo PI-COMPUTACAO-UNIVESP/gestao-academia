@@ -28,13 +28,14 @@ export default async function Page({ params }: Props) {
         <main className='container'>
             <article>
                 <header>
-                    <nav>
+                    <nav aria-label="Breadcrumb">
                         <ul>
                             <li>
                                 <Link
                                     href="/members"
                                     role="button"
                                     className="secondary outline"
+                                    aria-label="Voltar para lista de membros"
                                 >
                                     &lt; Voltar
                                 </Link>
@@ -126,7 +127,6 @@ export default async function Page({ params }: Props) {
 
                     <footer
                         className='grid'
-                        role="group"
                         aria-label="Ações do formulário"
                     >
                         <div className="grid">

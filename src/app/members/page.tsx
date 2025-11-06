@@ -13,7 +13,6 @@ export default async function HomePage() {
     return (
         <main
             className='container'
-            role="main"
             aria-labelledby="members-heading"
         >
             <article>
@@ -24,7 +23,7 @@ export default async function HomePage() {
                         academia.
                     </p>
                 </header>
-                <table aria-label="Lista de membros da academia" role="grid">
+                <table aria-label="Lista de membros da academia">
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
@@ -45,7 +44,11 @@ export default async function HomePage() {
                                     <Link
                                         href={`/members/${member.id}`}
                                         title="Editar"
-                                        aria-label="Editar detalhes do membro"
+                                        aria-label={
+                                            `Editar detalhes de ` +
+                                            `${member.firstName} ` +
+                                            `${member.lastName}`
+                                        }
                                         data-tooltip="Editar"
                                     >
                                         <Image

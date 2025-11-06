@@ -8,13 +8,14 @@ export default async function NewClassPage() {
         <main className='container'>
             <article>
                 <header>
-                    <nav>
+                    <nav aria-label="Breadcrumb">
                         <ul>
                             <li>
                                 <Link
                                     href="/attendances"
                                     role="button"
                                     className="secondary outline"
+                                    aria-label="Voltar para lista de aulas"
                                 >
                                     &lt; Voltar
                                 </Link>
@@ -67,7 +68,7 @@ export default async function NewClassPage() {
                         />
                     </label>
 
-                    <footer role="group" aria-label="Ações do formulário">
+                    <footer aria-label="Ações do formulário">
                         <button
                             type="submit"
                             aria-label="Cadastrar nova aula"

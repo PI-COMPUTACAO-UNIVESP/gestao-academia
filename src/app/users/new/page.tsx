@@ -8,13 +8,14 @@ export default async function NewUserPage() {
         <main className='container'>
             <article>
                 <header>
-                    <nav>
+                    <nav aria-label="Breadcrumb">
                         <ul>
                             <li>
                                 <Link
                                     href="/users"
                                     role="button"
                                     className="secondary outline"
+                                    aria-label="Voltar para lista de usuários"
                                 >
                                     &lt; Voltar
                                 </Link>
@@ -85,7 +86,7 @@ export default async function NewUserPage() {
                         </select>
                     </label>
 
-                    <footer role="group" aria-label="Ações do formulário">
+                    <footer aria-label="Ações do formulário">
                         <button
                             type="submit"
                             aria-label="Adicionar novo usuário ao sistema"

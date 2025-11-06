@@ -13,7 +13,6 @@ export default async function UsersPage() {
     return (
         <main
             className='container'
-            role="main"
             aria-labelledby="users-heading"
         >
             <article>
@@ -24,7 +23,7 @@ export default async function UsersPage() {
                         acesso.
                     </p>
                 </header>
-                <table aria-label="Lista de usuários do sistema" role="grid">
+                <table aria-label="Lista de usuários do sistema">
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
@@ -47,7 +46,8 @@ export default async function UsersPage() {
                                             href={`/users/${user.id}`}
                                             title="Editar"
                                             aria-label={
-                                                'Editar detalhes do usuário'
+                                                `Editar detalhes de ` +
+                                                `${user.name}`
                                             }
                                             data-tooltip="Editar"
                                         >

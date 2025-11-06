@@ -10,7 +10,7 @@ export default function Header() {
     const { user, signOut } = useAuth();
 
     return (
-        <header role="banner">
+        <header>
             <div className="container">
                 <h1
                     style={{
@@ -29,14 +29,13 @@ export default function Header() {
                 </h1>
                 <nav aria-label="Menu principal">
                     <ul
-                        role="menubar"
                         style={{
                             display: 'flex',
                             gap: '1rem',
                             alignItems: 'center',
                         }}
                     >
-                        <li role="menuitem">
+                        <li>
                             <Link
                                 href="/"
                                 aria-current={
@@ -50,7 +49,7 @@ export default function Header() {
                         </li>
                         {user?.profile === 'Administrador' && (
                             <>
-                                <li role="menuitem">
+                                <li>
                                     <Link
                                         href="/users"
                                         aria-current={
@@ -62,7 +61,7 @@ export default function Header() {
                                         Usuários
                                     </Link>
                                 </li>
-                                <li role="menuitem">
+                                <li>
                                     <Link
                                         href="/payments"
                                         aria-current={
@@ -76,7 +75,7 @@ export default function Header() {
                                 </li>
                             </>
                         )}
-                        <li role="menuitem">
+                        <li>
                             <Link
                                 href="/members"
                                 aria-current={
@@ -88,7 +87,7 @@ export default function Header() {
                                 Membros
                             </Link>
                         </li>
-                        <li role="menuitem">
+                        <li>
                             <Link
                                 href="/attendances"
                                 aria-current={
@@ -101,7 +100,13 @@ export default function Header() {
                             </Link>
                         </li>
                     </ul>
-                    <Link href="/" onClick={signOut}>Sair</Link>
+                    <Link
+                        href="/"
+                        onClick={signOut}
+                        aria-label="Sair do sistema"
+                    >
+                        Sair
+                    </Link>
                 </nav>
             </div>
         </header>
