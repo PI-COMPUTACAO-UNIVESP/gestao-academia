@@ -40,16 +40,16 @@ export function MemberSearch({
     return (
         <div>
             {!selectedMember && (
-                <label htmlFor="member-search" id="search-label">
+                <label htmlFor='member-search' id='search-label'>
                     Buscar Membro por Nome
                     <input
-                        type="text"
-                        id="member-search"
-                        placeholder="Digite o nome do membro"
+                        type='text'
+                        id='member-search'
+                        placeholder='Digite o nome do membro'
                         value={query}
                         onChange={(e) => handleSearch(e.target.value)}
-                        aria-labelledby="search-label"
-                        autoComplete="off"
+                        aria-labelledby='search-label'
+                        autoComplete='off'
                     />
                 </label>
             )}
@@ -69,11 +69,12 @@ export function MemberSearch({
                         {selectedMember.firstName} {selectedMember.lastName}
                     </p>
                     <button
-                        type="button"
-                        className="secondary outline"
+                        type='button'
+                        className='secondary outline'
                         onClick={() =>
                             onSelectMember(null as unknown as Member)
                         }
+                        aria-label='Trocar membro selecionado'
                         style={{
                             marginTop: '0.5rem',
                             padding: '0.5rem 1rem',
@@ -89,18 +90,19 @@ export function MemberSearch({
 
             {results.length > 0 && !selectedMember && (
                 <div
+                    aria-label='Resultados da busca'
                     style={{
                         marginTop: '1rem',
                         border: '1px solid var(--muted-border-color)',
                         borderRadius: 'var(--border-radius)',
                     }}
                 >
-                    <table>
+                    <table aria-label='Membros encontrados'>
                         <thead>
                             <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Ação</th>
+                                <th scope='col'>Nome</th>
+                                <th scope='col'>Email</th>
+                                <th scope='col'>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -112,11 +114,16 @@ export function MemberSearch({
                                     <td>{member.email}</td>
                                     <td>
                                         <button
-                                            type="button"
+                                            type='button'
                                             onClick={() =>
                                                 handleSelectMember(member)
                                             }
-                                            className="secondary"
+                                            className='secondary'
+                                            aria-label={
+                                                `Selecionar ` +
+                                                `${member.firstName} ` +
+                                                `${member.lastName}`
+                                            }
                                             style={{
                                                 padding: '0.5rem 1rem',
                                                 fontSize: '0.875rem',

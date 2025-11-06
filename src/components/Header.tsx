@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 
@@ -9,21 +10,34 @@ export default function Header() {
     const { user, signOut } = useAuth();
 
     return (
-        <header role="banner">
-            <div className="container">
-                <h1>Gestão de academias</h1>
-                <nav aria-label="Menu principal">
+        <header>
+            <div className='container'>
+                <h1
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                    }}
+                >
+                    <Image
+                        src='/chart-2-svgrepo-com.svg'
+                        alt='Logo'
+                        width={32}
+                        height={32}
+                    />
+                    Gestão de academias
+                </h1>
+                <nav aria-label='Menu principal'>
                     <ul
-                        role="menubar"
                         style={{
                             display: 'flex',
                             gap: '1rem',
                             alignItems: 'center',
                         }}
                     >
-                        <li role="menuitem">
+                        <li>
                             <Link
-                                href="/"
+                                href='/'
                                 aria-current={
                                     pathname === '/' ?
                                         'page' :
@@ -35,9 +49,9 @@ export default function Header() {
                         </li>
                         {user?.profile === 'Administrador' && (
                             <>
-                                <li role="menuitem">
+                                <li>
                                     <Link
-                                        href="/users"
+                                        href='/users'
                                         aria-current={
                                             pathname?.startsWith('/users') ?
                                                 'page' :
@@ -47,9 +61,9 @@ export default function Header() {
                                         Usuários
                                     </Link>
                                 </li>
-                                <li role="menuitem">
+                                <li>
                                     <Link
-                                        href="/payments"
+                                        href='/payments'
                                         aria-current={
                                             pathname?.startsWith('/payments') ?
                                                 'page' :
@@ -61,9 +75,9 @@ export default function Header() {
                                 </li>
                             </>
                         )}
-                        <li role="menuitem">
+                        <li>
                             <Link
-                                href="/members"
+                                href='/members'
                                 aria-current={
                                     pathname?.startsWith('/members') ?
                                         'page' :
@@ -73,9 +87,9 @@ export default function Header() {
                                 Membros
                             </Link>
                         </li>
-                        <li role="menuitem">
+                        <li>
                             <Link
-                                href="/attendances"
+                                href='/attendances'
                                 aria-current={
                                     pathname?.startsWith('/attendances') ?
                                         'page' :
@@ -86,7 +100,13 @@ export default function Header() {
                             </Link>
                         </li>
                     </ul>
-                    <Link href="/" onClick={signOut}>Sair</Link>
+                    <Link
+                        href='/'
+                        onClick={signOut}
+                        aria-label='Sair do sistema'
+                    >
+                        Sair
+                    </Link>
                 </nav>
             </div>
         </header>

@@ -13,21 +13,24 @@ export default async function UsersPage() {
     return (
         <main
             className='container'
-            role="main"
-            aria-labelledby="users-heading"
+            aria-labelledby='users-heading'
         >
             <article>
                 <header>
-                    <h2 id="users-heading">Usuários</h2>
+                    <h2 id='users-heading'>Usuários</h2>
+                    <p>
+                        Gerencie os usuários do sistema e suas permissões de
+                        acesso.
+                    </p>
                 </header>
-                <table aria-label="Lista de usuários do sistema" role="grid">
+                <table aria-label='Lista de usuários do sistema'>
                     <thead>
                         <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Perfil</th>
-                            <th scope="col">Data de criação</th>
-                            {isAdmin && <th scope="col">Ações</th>}
+                            <th scope='col'>Nome</th>
+                            <th scope='col'>E-mail</th>
+                            <th scope='col'>Perfil</th>
+                            <th scope='col'>Data de criação</th>
+                            {isAdmin && <th scope='col'>Ações</th>}
                         </tr>
                     </thead>
                     <tbody>
@@ -41,18 +44,19 @@ export default async function UsersPage() {
                                     <td>
                                         <Link
                                             href={`/users/${user.id}`}
-                                            title="Editar"
+                                            title='Editar'
                                             aria-label={
-                                                'Editar detalhes do usuário'
+                                                `Editar detalhes de ` +
+                                                `${user.name}`
                                             }
-                                            data-tooltip="Editar"
+                                            data-tooltip='Editar'
                                         >
                                             <Image
                                                 src={
                                                     '/square-top-up-' +
                                                     'svgrepo-com.svg'
                                                 }
-                                                alt="Editar"
+                                                alt='Editar'
                                                 width={24}
                                                 height={24}
                                             />
@@ -66,8 +70,8 @@ export default async function UsersPage() {
                 {isAdmin && (
                     <footer>
                         <Link
-                            href="/users/new"
-                            role="button"
+                            href='/users/new'
+                            role='button'
                         >
                             Adicionar usuário
                         </Link>

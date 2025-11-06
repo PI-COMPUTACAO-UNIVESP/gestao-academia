@@ -9,20 +9,23 @@ export default async function AttendancesPage() {
     return (
         <main
             className='container'
-            role="main"
-            aria-labelledby="attendances-heading"
+            aria-labelledby='attendances-heading'
         >
             <article>
                 <header>
-                    <h2 id="attendances-heading">Aulas e Presenças</h2>
+                    <h2 id='attendances-heading'>Aulas e Presenças</h2>
+                    <p>
+                        Gerencie as aulas cadastradas e controle a presença
+                        dos alunos.
+                    </p>
                 </header>
-                <table aria-label="Lista de aulas" role="grid">
+                <table aria-label='Lista de aulas'>
                     <thead>
                         <tr>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Data e Hora</th>
-                            <th scope="col">Presenças</th>
-                            <th scope="col">Ações</th>
+                            <th scope='col'>Tipo</th>
+                            <th scope='col'>Data e Hora</th>
+                            <th scope='col'>Presenças</th>
+                            <th scope='col'>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,13 +37,16 @@ export default async function AttendancesPage() {
                                 <td>
                                     <Link
                                         href={`/attendances/${classItem.id}`}
-                                        title="Gerenciar presenças"
-                                        aria-label="Gerenciar presenças da aula"
-                                        data-tooltip="Gerenciar"
+                                        title='Gerenciar presenças'
+                                        aria-label={
+                                            `Gerenciar presenças da aula ` +
+                                            `de ${classItem.type}`
+                                        }
+                                        data-tooltip='Gerenciar'
                                     >
                                         <Image
-                                            src="/square-top-up-svgrepo-com.svg"
-                                            alt="Gerenciar"
+                                            src='/square-top-up-svgrepo-com.svg'
+                                            alt='Gerenciar presenças da aula'
                                             width={24}
                                             height={24}
                                         />
@@ -52,8 +58,8 @@ export default async function AttendancesPage() {
                 </table>
                 <footer>
                     <Link
-                        href="/attendances/new"
-                        role="button"
+                        href='/attendances/new'
+                        role='button'
                     >
                         Cadastrar nova aula
                     </Link>

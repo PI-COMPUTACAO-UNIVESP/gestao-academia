@@ -8,76 +8,77 @@ export default async function NewUserPage() {
         <main className='container'>
             <article>
                 <header>
-                    <nav>
+                    <nav aria-label='Breadcrumb'>
                         <ul>
                             <li>
                                 <Link
-                                    href="/users"
-                                    role="button"
-                                    className="secondary outline"
+                                    href='/users'
+                                    role='button'
+                                    className='secondary outline'
+                                    aria-label='Voltar para lista de usuários'
                                 >
                                     &lt; Voltar
                                 </Link>
                             </li>
                         </ul>
                     </nav>
-                    <h2 id="new-user-heading">Novo Usuário</h2>
+                    <h2 id='new-user-heading'>Novo Usuário</h2>
                 </header>
 
                 <form
                     action={createUser.bind(null)}
-                    aria-labelledby="new-user-heading"
+                    aria-labelledby='new-user-heading'
                 >
-                    <label htmlFor="name" id="name-label">
+                    <label htmlFor='name' id='name-label'>
                         Nome
                         <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Nome completo"
+                            type='text'
+                            id='name'
+                            name='name'
+                            placeholder='Nome completo'
                             required
-                            aria-required="true"
-                            aria-labelledby="name-label"
+                            aria-required='true'
+                            aria-labelledby='name-label'
                             aria-invalid={false}
                         />
                     </label>
 
-                    <label htmlFor="email" id="email-label">
+                    <label htmlFor='email' id='email-label'>
                         Email
                         <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Email"
+                            type='email'
+                            id='email'
+                            name='email'
+                            placeholder='Email'
                             required
-                            aria-required="true"
-                            aria-labelledby="email-label"
+                            aria-required='true'
+                            aria-labelledby='email-label'
                             aria-invalid={false}
                         />
                     </label>
 
-                    <label htmlFor="password" id="password-label">
+                    <label htmlFor='password' id='password-label'>
                         Senha
                         <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Senha"
+                            type='password'
+                            id='password'
+                            name='password'
+                            placeholder='Senha'
                             required
-                            aria-required="true"
-                            aria-labelledby="password-label"
+                            aria-required='true'
+                            aria-labelledby='password-label'
                             aria-invalid={false}
                         />
                     </label>
 
-                    <label htmlFor="profile" id="profile-label">
+                    <label htmlFor='profile' id='profile-label'>
                         Perfil
                         <select
-                            id="profile"
-                            name="profile"
+                            id='profile'
+                            name='profile'
                             required
-                            aria-required="true"
-                            aria-labelledby="profile-label"
+                            aria-required='true'
+                            aria-labelledby='profile-label'
                             aria-invalid={false}
                         >
                             <option>Administrador</option>
@@ -85,10 +86,10 @@ export default async function NewUserPage() {
                         </select>
                     </label>
 
-                    <footer role="group" aria-label="Ações do formulário">
+                    <footer aria-label='Ações do formulário'>
                         <button
-                            type="submit"
-                            aria-label="Adicionar novo usuário ao sistema"
+                            type='submit'
+                            aria-label='Adicionar novo usuário ao sistema'
                         >
                             Adicionar novo usuário
                         </button>
