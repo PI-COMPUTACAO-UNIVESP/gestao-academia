@@ -38,27 +38,27 @@ export default function SignIn() {
     return <dialog
         ref={dialogRef}
         open
-        aria-labelledby="login-heading"
+        aria-labelledby='login-heading'
     >
         <article>
             <header>
-                <h2 id="login-heading">Login</h2>
+                <h2 id='login-heading'>Login</h2>
             </header>
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                aria-labelledby="login-heading"
+                aria-labelledby='login-heading'
             >
                 {error && (
                     <p style={{ color: 'red', marginBottom: '1rem' }}>
                         {error}
                     </p>
                 )}
-                <label htmlFor="email">
+                <label htmlFor='email'>
                     Email:
                     <input
-                        type="email"
-                        id="email"
-                        placeholder="Digite seu email"
+                        type='email'
+                        id='email'
+                        placeholder='Digite seu email'
                         aria-describedby={
                             errors.email ? 'email-error' : undefined
                         }
@@ -68,19 +68,19 @@ export default function SignIn() {
                     />
                     {errors.email && (
                         <small
-                            id="email-error"
+                            id='email-error'
                             style={{ color: 'red' }}
                         >
                             {errors.email.message}
                         </small>
                     )}
                 </label>
-                <label htmlFor="password">
+                <label htmlFor='password'>
                     Senha:
                     <input
-                        type="password"
-                        id="password"
-                        placeholder="Digite sua senha"
+                        type='password'
+                        id='password'
+                        placeholder='Digite sua senha'
                         aria-describedby={
                             errors.password ?
                                 'password-error' :
@@ -92,7 +92,7 @@ export default function SignIn() {
                     />
                     {errors.password && (
                         <small
-                            id="password-error"
+                            id='password-error'
                             style={{ color: 'red' }}
                         >
                             {errors.password.message}
@@ -100,8 +100,8 @@ export default function SignIn() {
                     )}
                 </label>
                 <button
-                    type="submit"
-                    aria-label="Fazer login no sistema"
+                    type='submit'
+                    aria-label='Fazer login no sistema'
                 >
                     Entrar
                 </button>

@@ -51,16 +51,16 @@ export function MemberSearch({
 
     return (
         <div>
-            <label htmlFor="member-search" id="search-label">
+            <label htmlFor='member-search' id='search-label'>
                 Buscar Membro por Nome
                 <input
-                    type="text"
-                    id="member-search"
-                    placeholder="Digite o nome do membro"
+                    type='text'
+                    id='member-search'
+                    placeholder='Digite o nome do membro'
                     value={query}
                     onChange={(e) => handleSearch(e.target.value)}
-                    aria-labelledby="search-label"
-                    autoComplete="off"
+                    aria-labelledby='search-label'
+                    autoComplete='off'
                 />
             </label>
 
@@ -80,19 +80,19 @@ export function MemberSearch({
 
             {results.length > 0 && (
                 <div
-                    aria-label="Resultados da busca"
+                    aria-label='Resultados da busca'
                     style={{
                         marginTop: '1rem',
                         border: '1px solid var(--muted-border-color)',
                         borderRadius: 'var(--border-radius)',
                     }}
                 >
-                    <table aria-label="Membros encontrados">
+                    <table aria-label='Membros encontrados'>
                         <thead>
                             <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Ação</th>
+                                <th scope='col'>Nome</th>
+                                <th scope='col'>Email</th>
+                                <th scope='col'>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,12 +108,12 @@ export function MemberSearch({
                                         <td>{member.email}</td>
                                         <td>
                                             <button
-                                                type="button"
+                                                type='button'
                                                 onClick={() =>
                                                     handleAddMember(member.id)
                                                 }
                                                 disabled={isAlreadyAdded}
-                                                className="secondary"
+                                                className='secondary'
                                                 aria-label={
                                                     `Adicionar ` +
                                                     `${member.firstName} ` +

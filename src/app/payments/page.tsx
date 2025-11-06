@@ -14,24 +14,24 @@ export default async function PaymentsPage() {
     return (
         <main
             className='container'
-            aria-labelledby="payments-heading"
+            aria-labelledby='payments-heading'
         >
             <article>
                 <header>
-                    <h2 id="payments-heading">Pagamentos</h2>
+                    <h2 id='payments-heading'>Pagamentos</h2>
                     <p>
                         Gerencie os pagamentos e mensalidades dos membros da
                         academia.
                     </p>
                 </header>
-                <table aria-label="Lista de pagamentos">
+                <table aria-label='Lista de pagamentos'>
                     <thead>
                         <tr>
-                            <th scope="col">Data do Pagamento</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Válido até</th>
-                            <th scope="col">Membro</th>
-                            <th scope="col">Ações</th>
+                            <th scope='col'>Data do Pagamento</th>
+                            <th scope='col'>Valor</th>
+                            <th scope='col'>Válido até</th>
+                            <th scope='col'>Membro</th>
+                            <th scope='col'>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,9 +68,9 @@ export default async function PaymentsPage() {
                                             }
                                         >
                                             <button
-                                                type="submit"
-                                                className="secondary"
-                                                title="Excluir"
+                                                type='submit'
+                                                className='secondary'
+                                                title='Excluir'
                                                 aria-label={
                                                     `Excluir pagamento de ${
                                                         payment.member
@@ -80,7 +80,7 @@ export default async function PaymentsPage() {
                                                             .lastName
                                                     }`
                                                 }
-                                                data-tooltip="Excluir"
+                                                data-tooltip='Excluir'
                                                 style={{
                                                     padding: '0.5rem',
                                                     border: 'none',
@@ -90,7 +90,7 @@ export default async function PaymentsPage() {
                                             >
                                                 <Image
                                                     src={SVG_TRASH_BIN}
-                                                    alt="Excluir"
+                                                    alt='Excluir'
                                                     width={24}
                                                     height={24}
                                                 />
@@ -105,8 +105,8 @@ export default async function PaymentsPage() {
                 {isAdmin && (
                     <footer>
                         <Link
-                            href="/payments/new"
-                            role="button"
+                            href='/payments/new'
+                            role='button'
                         >
                             Adicionar pagamento
                         </Link>

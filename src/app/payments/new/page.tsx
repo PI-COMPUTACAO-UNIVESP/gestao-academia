@@ -40,10 +40,10 @@ export default function NewPaymentPage() {
     };
 
     return (
-        <main className="container">
+        <main className='container'>
             <article>
                 <header>
-                    <h2 id="payment-heading">Novo Pagamento</h2>
+                    <h2 id='payment-heading'>Novo Pagamento</h2>
                 </header>
 
                 {error && (
@@ -54,60 +54,60 @@ export default function NewPaymentPage() {
                     </p>
                 )}
 
-                <form action={handleSubmit} aria-labelledby="payment-heading">
+                <form action={handleSubmit} aria-labelledby='payment-heading'>
                     <MemberSearch
                         onSelectMember={setSelectedMember}
                         selectedMember={selectedMember}
                     />
 
-                    <label htmlFor="paymentDate">
+                    <label htmlFor='paymentDate'>
                         Data do Pagamento
                         <input
-                            type="date"
-                            id="paymentDate"
-                            name="paymentDate"
+                            type='date'
+                            id='paymentDate'
+                            name='paymentDate'
                             required
                             onChange={handlePaymentDateChange}
                         />
                     </label>
 
-                    <label htmlFor="amount">
+                    <label htmlFor='amount'>
                         Valor (R$)
                         <input
-                            type="number"
-                            id="amount"
-                            name="amount"
-                            step="0.01"
-                            min="0"
+                            type='number'
+                            id='amount'
+                            name='amount'
+                            step='0.01'
+                            min='0'
                             required
-                            placeholder="0.00"
+                            placeholder='0.00'
                         />
                     </label>
 
-                    <label htmlFor="validUntil">
+                    <label htmlFor='validUntil'>
                         Válido até
                         <input
-                            type="date"
-                            id="validUntil"
-                            name="validUntil"
+                            type='date'
+                            id='validUntil'
+                            name='validUntil'
                             required
                             value={validUntil}
                             onChange={(e) => setValidUntil(e.target.value)}
                         />
                     </label>
 
-                    <footer aria-label="Ações do formulário">
+                    <footer aria-label='Ações do formulário'>
                         <button
-                            type="submit"
+                            type='submit'
                             disabled={!selectedMember}
-                            aria-label="Salvar novo pagamento"
+                            aria-label='Salvar novo pagamento'
                         >
                             Salvar
                         </button>
                         <Link
-                            href="/payments"
-                            role="button"
-                            className="secondary"
+                            href='/payments'
+                            role='button'
+                            className='secondary'
                             aria-label={
                                 'Cancelar e voltar para lista ' +
                                 'de pagamentos'

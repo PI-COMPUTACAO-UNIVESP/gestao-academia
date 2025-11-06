@@ -13,24 +13,24 @@ export default async function HomePage() {
     return (
         <main
             className='container'
-            aria-labelledby="members-heading"
+            aria-labelledby='members-heading'
         >
             <article>
                 <header>
-                    <h2 id="members-heading">Membros</h2>
+                    <h2 id='members-heading'>Membros</h2>
                     <p>
                         Visualize e gerencie todos os membros cadastrados na
                         academia.
                     </p>
                 </header>
-                <table aria-label="Lista de membros da academia">
+                <table aria-label='Lista de membros da academia'>
                     <thead>
                         <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Data de nascimento</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Ações</th>
+                            <th scope='col'>Nome</th>
+                            <th scope='col'>Data de nascimento</th>
+                            <th scope='col'>Telefone</th>
+                            <th scope='col'>E-mail</th>
+                            <th scope='col'>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,17 +43,17 @@ export default async function HomePage() {
                                 <td>
                                     <Link
                                         href={`/members/${member.id}`}
-                                        title="Editar"
+                                        title='Editar'
                                         aria-label={
                                             `Editar detalhes de ` +
                                             `${member.firstName} ` +
                                             `${member.lastName}`
                                         }
-                                        data-tooltip="Editar"
+                                        data-tooltip='Editar'
                                     >
                                         <Image
-                                            src="/square-top-up-svgrepo-com.svg"
-                                            alt="Editar"
+                                            src='/square-top-up-svgrepo-com.svg'
+                                            alt='Editar'
                                             width={24}
                                             height={24}
                                         />
@@ -66,8 +66,8 @@ export default async function HomePage() {
                 {isAdmin && (
                     <footer>
                         <Link
-                            href="/members/new"
-                            role="button"
+                            href='/members/new'
+                            role='button'
                         >
                             Adicionar membro
                         </Link>

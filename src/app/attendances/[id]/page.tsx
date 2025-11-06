@@ -34,86 +34,86 @@ export default async function ClassPage({ params }: Props) {
         <main className='container'>
             <article>
                 <header>
-                    <nav aria-label="Breadcrumb">
+                    <nav aria-label='Breadcrumb'>
                         <ul>
                             <li>
                                 <Link
-                                    href="/attendances"
-                                    role="button"
-                                    className="secondary outline"
-                                    aria-label="Voltar para lista de aulas"
+                                    href='/attendances'
+                                    role='button'
+                                    className='secondary outline'
+                                    aria-label='Voltar para lista de aulas'
                                 >
                                     &lt; Voltar
                                 </Link>
                             </li>
                         </ul>
                     </nav>
-                    <h2 id="form-heading">Gerenciar Aula</h2>
+                    <h2 id='form-heading'>Gerenciar Aula</h2>
                 </header>
 
                 <form
                     action={updateClassWithId}
-                    aria-labelledby="form-heading"
+                    aria-labelledby='form-heading'
                 >
-                    <label htmlFor="type" id="type-label">
+                    <label htmlFor='type' id='type-label'>
                         Tipo da Aula
                         <select
-                            id="type"
-                            name="type"
+                            id='type'
+                            name='type'
                             required
-                            aria-required="true"
-                            aria-labelledby="type-label"
+                            aria-required='true'
+                            aria-labelledby='type-label'
                             aria-invalid={false}
                             defaultValue={classData.type}
                         >
-                            <option value="" disabled>
+                            <option value='' disabled>
                                 Selecione o tipo (ex: Dança, Karatê, Boxe)
                             </option>
-                            <option value="Dança">Dança</option>
-                            <option value="Karatê">Karatê</option>
-                            <option value="Boxe">Boxe</option>
-                            <option value="Judô">Judô</option>
-                            <option value="Muay Thai">Muay Thai</option>
-                            <option value="Yoga">Yoga</option>
-                            <option value="Pilates">Pilates</option>
-                            <option value="Funcional">Funcional</option>
+                            <option value='Dança'>Dança</option>
+                            <option value='Karatê'>Karatê</option>
+                            <option value='Boxe'>Boxe</option>
+                            <option value='Judô'>Judô</option>
+                            <option value='Muay Thai'>Muay Thai</option>
+                            <option value='Yoga'>Yoga</option>
+                            <option value='Pilates'>Pilates</option>
+                            <option value='Funcional'>Funcional</option>
                         </select>
                     </label>
 
-                    <label htmlFor="date" id="date-label">
+                    <label htmlFor='date' id='date-label'>
                         Data e Hora
                         <input
-                            type="datetime-local"
-                            id="date"
-                            name="date"
+                            type='datetime-local'
+                            id='date'
+                            name='date'
                             defaultValue={formatDateTimeForInput(
                                 classData.date,
                             )}
-                            step="1800"
+                            step='1800'
                             required
-                            aria-required="true"
-                            aria-labelledby="date-label"
+                            aria-required='true'
+                            aria-labelledby='date-label'
                             aria-invalid={false}
                         />
                     </label>
 
                     <footer
                         className='grid'
-                        aria-label="Ações do formulário"
+                        aria-label='Ações do formulário'
                     >
-                        <div className="grid">
+                        <div className='grid'>
                             <button
-                                type="submit"
-                                aria-label="Salvar alterações na aula"
+                                type='submit'
+                                aria-label='Salvar alterações na aula'
                             >
                                 Salvar
                             </button>
 
                             <button
-                                type="submit"
+                                type='submit'
                                 onClick={deleteClassWithId}
-                                className="secondary"
-                                aria-label="Excluir esta aula"
+                                className='secondary'
+                                aria-label='Excluir esta aula'
                                 disabled={!isAdmin}
                             >
                                 Excluir
@@ -125,9 +125,9 @@ export default async function ClassPage({ params }: Props) {
 
             <article>
                 <header>
-                    <h3 id="add-members-heading">Adicionar Membros à Aula</h3>
+                    <h3 id='add-members-heading'>Adicionar Membros à Aula</h3>
                 </header>
-                <section aria-labelledby="add-members-heading">
+                <section aria-labelledby='add-members-heading'>
                     <MemberSearch
                         classId={id}
                         currentMembers={classData.attendances}
@@ -137,7 +137,7 @@ export default async function ClassPage({ params }: Props) {
 
             <article>
                 <header>
-                    <h3 id="present-members-heading">
+                    <h3 id='present-members-heading'>
                         Membros Presentes (
                         {classData.attendances.length})
                     </h3>
@@ -146,14 +146,14 @@ export default async function ClassPage({ params }: Props) {
                     <p>Nenhum membro registrado nesta aula ainda.</p>
                 ) : (
                     <table
-                        aria-labelledby="present-members-heading"
+                        aria-labelledby='present-members-heading'
                     >
                         <thead>
                             <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">Ação</th>
+                                <th scope='col'>Nome</th>
+                                <th scope='col'>Email</th>
+                                <th scope='col'>Telefone</th>
+                                <th scope='col'>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -183,8 +183,8 @@ export default async function ClassPage({ params }: Props) {
                                             }
                                         >
                                             <button
-                                                type="submit"
-                                                className="secondary outline"
+                                                type='submit'
+                                                className='secondary outline'
                                                 style={{
                                                     padding: '0.5rem 1rem',
                                                     fontSize: '0.875rem',

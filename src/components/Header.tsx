@@ -11,7 +11,7 @@ export default function Header() {
 
     return (
         <header>
-            <div className="container">
+            <div className='container'>
                 <h1
                     style={{
                         display: 'flex',
@@ -20,14 +20,14 @@ export default function Header() {
                     }}
                 >
                     <Image
-                        src="/chart-2-svgrepo-com.svg"
-                        alt="Logo"
+                        src='/chart-2-svgrepo-com.svg'
+                        alt='Logo'
                         width={32}
                         height={32}
                     />
                     Gestão de academias
                 </h1>
-                <nav aria-label="Menu principal">
+                <nav aria-label='Menu principal'>
                     <ul
                         style={{
                             display: 'flex',
@@ -37,7 +37,7 @@ export default function Header() {
                     >
                         <li>
                             <Link
-                                href="/"
+                                href='/'
                                 aria-current={
                                     pathname === '/' ?
                                         'page' :
@@ -51,7 +51,7 @@ export default function Header() {
                             <>
                                 <li>
                                     <Link
-                                        href="/users"
+                                        href='/users'
                                         aria-current={
                                             pathname?.startsWith('/users') ?
                                                 'page' :
@@ -63,7 +63,7 @@ export default function Header() {
                                 </li>
                                 <li>
                                     <Link
-                                        href="/payments"
+                                        href='/payments'
                                         aria-current={
                                             pathname?.startsWith('/payments') ?
                                                 'page' :
@@ -77,7 +77,7 @@ export default function Header() {
                         )}
                         <li>
                             <Link
-                                href="/members"
+                                href='/members'
                                 aria-current={
                                     pathname?.startsWith('/members') ?
                                         'page' :
@@ -89,7 +89,7 @@ export default function Header() {
                         </li>
                         <li>
                             <Link
-                                href="/attendances"
+                                href='/attendances'
                                 aria-current={
                                     pathname?.startsWith('/attendances') ?
                                         'page' :
@@ -101,9 +101,9 @@ export default function Header() {
                         </li>
                     </ul>
                     <Link
-                        href="/"
+                        href='/'
                         onClick={signOut}
-                        aria-label="Sair do sistema"
+                        aria-label='Sair do sistema'
                     >
                         Sair
                     </Link>
