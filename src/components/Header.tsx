@@ -73,6 +73,18 @@ export default function Header() {
                                         Pagamentos
                                     </Link>
                                 </li>
+                                <li>
+                                    <Link
+                                        href='/churn'
+                                        aria-current={
+                                            pathname?.startsWith('/churn') ?
+                                                'page' :
+                                                undefined
+                                        }
+                                    >
+                                        Previsão de Churn
+                                    </Link>
+                                </li>
                             </>
                         )}
                         <li>
