@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 import pandas as pd
 import joblib
 import os
 
-app = FastAPI()
+app = FastAPI(docs_url="/api/py/docs", openapi_url="/api/py/openapi.json")
 
 # Permite que o site acesse esta IA
 app.add_middleware(
@@ -15,34 +16,32 @@ app.add_middleware(
 )
 
 # Caminho da IA produzida no Colab
-MODEL_PATH = "modelo_churn_academia.pkl"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "modelo_churn_academia.pkl")
 
-@app.get("/")
+class PredictRequest(BaseModel):
+    frequencia_semanal: float
+    atrasos_pagamento: float
+
+@app.get("/api/py/status")
 def home():
-    return {"status": "IA Online e Pronta"}
+    return {"status": "IA Online e Pronta", "model_loaded": os.path.exists(MODEL_PATH)}
 
-@app.post("/predict")
-def predict_churn(data: dict):
+@app.post("/api/py/predict")
+def predict_churn(data: PredictRequest):
     try:
-        # 1. Extraímos os valores do dicionário enviado no teste
-        freq = data.get('frequencia_semanal', 0)
-        atraso = data.get('atrasos_pagamento', 0)
+        freq = data.frequencia_semanal
+        atraso = data.atrasos_pagamento
 
-        # 2. Verifica se o arquivo .pkl existe dentro do Docker
         if os.path.exists(MODEL_PATH):
-            # Carregamos o modelo usando joblib
             model = joblib.load(MODEL_PATH)
-            
-            # 3. Cria um (DataFrame) com os nomes exatos das colunas
+
             df = pd.DataFrame([[freq, atraso]], columns=['frequencia_semanal', 'atrasos_pagamento'])
-            
-            # 4. A IA faz a previsão real baseada no treinamento
+
             prediction = model.predict_proba(df)[0][1]
         else:
-            # Caso o arquivo não seja encontrado, usar a lógica de reserva
             prediction = 0.8 if freq < 3 and atraso > 5 else 0.2
 
-        # Isso resolve o erro "TypeError: 'numpy.bool' object is not iterable"
         risk_score = float(prediction)
         is_alert = bool(risk_score > 0.7)
 
@@ -52,5 +51,4 @@ def predict_churn(data: dict):
             "alert": is_alert
         }
     except Exception as e:
-        # Retorna o erro real para facilitar o seu diagnóstico se algo falhar
         return {"status": "error", "message": str(e)}
