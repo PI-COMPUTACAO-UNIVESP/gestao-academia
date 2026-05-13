@@ -40,7 +40,7 @@ export default function ChurnForm() {
             } else {
                 setResult({ message: data.message || 'Erro ao prever churn' });
             }
-        } catch (error) {
+        } catch (_error) {
             setResult({ message: 'Erro na conexão com a API de IA.' });
         } finally {
             setLoading(false);
@@ -59,7 +59,9 @@ export default function ChurnForm() {
                     min='0'
                     max='7'
                     value={frequenciaSemanal}
-                    onChange={(e) => setFrequenciaSemanal(Number(e.target.value))}
+                    onChange={(e) =>
+                        setFrequenciaSemanal(Number(e.target.value))
+                    }
                     required
                 />
             </label>
@@ -73,7 +75,9 @@ export default function ChurnForm() {
                     step='1'
                     min='0'
                     value={atrasosPagamento}
-                    onChange={(e) => setAtrasosPagamento(Number(e.target.value))}
+                    onChange={(e) =>
+                        setAtrasosPagamento(Number(e.target.value))
+                    }
                     required
                 />
             </label>
@@ -98,11 +102,25 @@ export default function ChurnForm() {
                             <p>
                                 <strong>Status:</strong>{' '}
                                 {result.alert ? (
-                                    <mark style={{ backgroundColor: '#ffcccc', color: '#cc0000', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
+                                    <mark
+                                        style={{
+                                            backgroundColor: '#ffcccc',
+                                            color: '#cc0000',
+                                            padding: '0.2rem 0.5rem',
+                                            borderRadius: '4px',
+                                        }}
+                                    >
                                         Risco Alto (Alerta)
                                     </mark>
                                 ) : (
-                                    <mark style={{ backgroundColor: '#ccffcc', color: '#006600', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
+                                    <mark
+                                        style={{
+                                            backgroundColor: '#ccffcc',
+                                            color: '#006600',
+                                            padding: '0.2rem 0.5rem',
+                                            borderRadius: '4px',
+                                        }}
+                                    >
                                         Risco Baixo
                                     </mark>
                                 )}

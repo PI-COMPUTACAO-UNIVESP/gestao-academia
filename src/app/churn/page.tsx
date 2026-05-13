@@ -18,7 +18,9 @@ export default async function ChurnPage() {
                 <header>
                     <h2 id='churn-heading'>Previsão de Cancelamento (Churn)</h2>
                     <p>
-                        Consulte a nossa Inteligência Artificial para descobrir a probabilidade de um membro cancelar seu plano, baseada na sua frequência e no histórico de pagamentos.
+                        Consulte a nossa Inteligência Artificial para descobrir
+                        a probabilidade de um membro cancelar seu plano, baseada
+                        na sua frequência e no histórico de pagamentos.
                     </p>
                 </header>
                 <ChurnForm />
