@@ -4,8 +4,8 @@ const nextConfig: NextConfig = {
     async rewrites() {
         return [
             {
-                source: "/api/py/:path*",
-                destination: "/api/index",
+                source: '/api/py/:path*',
+                destination: '/api/index',
             },
         ];
     },
